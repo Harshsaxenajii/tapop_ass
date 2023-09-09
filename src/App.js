@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./screens/Home";
+import Login from "./screens/Login";
+import Register from "./screens/Register";
+import NotFound from "./screens/NotFound";
+import Navbar from "./components/Navbar";
+import UploadImage from "./screens/UploadImage";
+import { useAuth } from "./firebase";
 
 function App() {
+  const currentUser = useAuth();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      {/* <Navbar /> */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/upload" element={<UploadImage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
   );
 }
 
