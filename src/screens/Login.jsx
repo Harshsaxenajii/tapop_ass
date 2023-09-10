@@ -1,10 +1,9 @@
 import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { login, useAuth } from "../firebase";
+import { login } from "../firebase";
 
 function Login() {
   const [loading, setLoading] = useState(false);
-  const currentUser = useAuth();
 
   const emailRef = useRef();
   const passwordRef = useRef();

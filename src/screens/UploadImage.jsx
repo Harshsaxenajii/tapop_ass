@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { upload, useAuth } from "../firebase";
 
@@ -10,9 +10,6 @@ function UploadImage() {
   const navigate = useNavigate();
   const [photo, setPhoto] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [photoURL, setPhotoURL] = useState(
-    "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
-  );
 
   const handleChange = (event) => {
     if (event.target.files[0]) {
@@ -71,6 +68,9 @@ function UploadImage() {
         >
           {loading ? "loading..." : "Submit"}
         </button>
+        <Link to={"/"}>
+          <div className="text-gray-400">Back to Home</div>
+        </Link>
       </div>
     </div>
   );

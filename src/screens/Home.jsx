@@ -37,16 +37,13 @@ function Home() {
     };
   }, []);
 
-  const [loading, setLoading] = useState(false);
   async function handleLogout() {
-    setLoading(true);
     try {
       await logout();
       navigate("/login");
     } catch {
       alert("Error!");
     }
-    setLoading(false);
   }
 
   return (

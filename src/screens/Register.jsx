@@ -1,14 +1,12 @@
 import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { signup, useAuth } from "../firebase";
+import { signup } from "../firebase";
 
 function Register() {
   const [loading, setLoading] = useState(false);
-  const currentUser = useAuth();
 
   const emailRef = useRef();
   const passwordRef = useRef();
-  const nameRef = useRef();
   const navigate = useNavigate();
 
   async function handleRegister() {

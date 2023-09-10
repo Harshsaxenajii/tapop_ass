@@ -10,7 +10,7 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+import { getDownloadURL, getStorage, ref } from "firebase/storage";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -23,7 +23,7 @@ const firebaseConfig = {
   measurementId: "G-NFZBK68EXZ",
 };
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const storage = getStorage();
 
@@ -57,7 +57,7 @@ export async function upload(file, currentUser, setLoading) {
 
   setLoading(true);
 
-  const snapshot = await uploadBytes(fileRef, file);
+  // const snapshot = await uploadBytes(fileRef, file);
   const photoURL = await getDownloadURL(fileRef);
 
   updateProfile(currentUser, { photoURL });
